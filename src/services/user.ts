@@ -1,30 +1,50 @@
+import type { UpdateFilter } from 'mongodb';
+
 import type { Database, User } from '../types/database.js';
 
-export function buildName(firstName: string, lastName?: string) {
-  return lastName ? `${firstName} ${lastName}` : firstName;
-}
-
-async function createUser(args: { db: Database; userId: number; name: string }): Promise<User> {
-  const userObject = {
-    userId: args.userId,
-    name: args.name,
-  } as User;
-
-  await args.db.user.insertOne(userObject);
-
-  return userObject;
-}
-
-export async function getOrCreateUser(args: { db: Database; userId: number; name: string }): Promise<User> {
+export async function getOrCreateUser(args: { db: Database; userId: number }): Promise<User> {
   const user = await args.db.user.findOneAndUpdate(
     { userId: args.userId },
-    { $set: { name: args.name } },
-    { returnDocument: 'after' },
+    {
+      $setOnInsert: {
+        userId: args.userId,
+        state: 'clickUp.privateKey',
+        clickUp: {
+          privateKey: '',
+          teamId: '',
+          userId: '',
+        },
+        from: {
+          name: '',
+          address: '',
+          country: '',
+          postalCode: '',
+        },
+        to: {
+          name: '',
+          address: '',
+          country: '',
+          postalCode: '',
+        },
+        bank: {
+          name: '',
+          iban: '',
+          bic: '',
+          currency: '',
+          perHour: '',
+        },
+      },
+    },
+    { upsert: true, returnDocument: 'after' },
   );
 
-  if (user.ok && user.value) {
-    return user.value;
+  if (!user.value) {
+    throw new Error(`Failed to create user with ID ${args.userId}`);
   }
 
-  return createUser(args);
+  return user.value;
+}
+
+export async function updateUser(args: { db: Database; userId: number; update: UpdateFilter<User>['$set'] }) {
+  return args.db.user.updateOne({ userId: args.userId }, { $set: args.update });
 }

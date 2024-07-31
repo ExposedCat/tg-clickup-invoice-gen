@@ -1,4 +1,23 @@
 {
-  "start": "[${chatName}] Hi there, ${name}!",
-  "stop": "[${chatName}] Bye, ${name}!"
+  "state.clickUp.privateKey": "Please send your '<b>privateKey</b>' as a single message",
+  "state.clickUp.teamId": "Please send your '<b>teamId</b>' as a single message",
+  "state.clickUp.userId": "Please send your '<b>userId</b>' as a single message",
+  "state.from.name": "Please send your '<b>name</b>' as a single message",
+  "state.from.address": "Please send your '<b>address</b>' as a single message",
+  "state.from.country": "Please send your '<b>country</b>' as a single message",
+  "state.from.postalCode": "Please send your '<b>postalCode</b>' as a single message",
+  "state.from.ico": "Please send your '<b>ico</b>' as a single message",
+  "state.from.dic": "Please send your '<b>dic</b>' as a single message",
+  "state.to.name": "Please send your '<b>name</b>' as a single message",
+  "state.to.address": "Please send your '<b>address</b>' as a single message",
+  "state.to.country": "Please send your '<b>country</b>' as a single message",
+  "state.to.postalCode": "Please send your '<b>postalCode</b>' as a single message",
+  "state.to.ico": "Please send your '<b>ico</b>' as a single message",
+  "state.to.dic": "Please send your '<b>dic</b>' as a single message",
+  "state.bank.name": "Please send your '<b>name</b>' as a single message",
+  "state.bank.iban": "Please send your '<b>iban</b>' as a single message",
+  "state.bank.bic": "Please send your '<b>bic</b>' as a single message",
+  "state.bank.currency": "Please send your '<b>currency</b>' as a single message",
+  "state.bank.perHour": "Please send your '<b>perHour</b>' as a single message",
+  "state.free": "All done! You can generate invoices now"
 }

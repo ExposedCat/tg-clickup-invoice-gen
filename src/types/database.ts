@@ -5,8 +5,8 @@ export type Details = {
   address: string;
   country: string;
   postalCode: string;
-  ico?: string;
-  dic?: string;
+  ICO?: string;
+  DIC?: string;
 };
 
 export type User = {
@@ -20,14 +20,14 @@ export type User = {
     | 'from.address'
     | 'from.country'
     | 'from.postalCode'
-    | 'from.ico'
-    | 'from.dic'
+    | 'from.ICO'
+    | 'from.DIC'
     | 'to.name'
     | 'to.address'
     | 'to.country'
     | 'to.postalCode'
-    | 'to.ico'
-    | 'to.dic'
+    | 'to.ICO'
+    | 'to.DIC'
     | 'bank.name'
     | 'bank.iban'
     | 'bank.bic'

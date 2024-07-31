@@ -14,14 +14,14 @@ const STATES: User['state'][] = [
   'from.address',
   'from.country',
   'from.postalCode',
-  'from.ico',
-  'from.dic',
+  'from.ICO',
+  'from.DIC',
   'to.name',
   'to.address',
   'to.country',
   'to.postalCode',
-  'to.ico',
-  'to.dic',
+  'to.ICO',
+  'to.DIC',
   'bank.name',
   'bank.iban',
   'bank.bic',
@@ -30,7 +30,7 @@ const STATES: User['state'][] = [
   'free',
 ];
 
-stateController.on('message:text', async ctx => {
+stateController.chatType('private').on('message:text', async ctx => {
   let nextState = ctx.user.state;
   if (ctx.user.state !== 'free' && ctx.message.text[0] !== '/') {
     const stateIndex = STATES.indexOf(ctx.user.state);

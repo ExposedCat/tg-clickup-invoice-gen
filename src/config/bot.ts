@@ -8,6 +8,7 @@ import { getOrCreateUser } from '../services/user.js';
 import { createReplyWithTextFunc } from '../services/context.js';
 import { resolvePath } from '../helpers/resolve-path.js';
 import { stateController } from '../controllers/state.js';
+import { generateController } from '../controllers/generate.js';
 import { initLocaleEngine } from './locale-engine.js';
 
 function extendContext(bot: Bot, database: Database) {
@@ -36,6 +37,7 @@ function setupMiddlewares(bot: Bot, localeEngine: I18n) {
 }
 
 function setupControllers(bot: Bot) {
+  bot.use(generateController);
   bot.use(stateController);
 }
 

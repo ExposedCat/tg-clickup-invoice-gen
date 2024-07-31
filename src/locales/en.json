@@ -19,5 +19,6 @@
   "state.bank.bic": "Please send your '<b>bic</b>' as a single message",
   "state.bank.currency": "Please send your '<b>currency</b>' as a single message",
   "state.bank.perHour": "Please send your '<b>perHour</b>' as a single message",
-  "state.free": "All done! You can generate invoices now"
+  "state.free": "All done! You can generate invoices now",
+  "error": "Error: ${error}"
 }

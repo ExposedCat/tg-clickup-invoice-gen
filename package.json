@@ -1,14 +1,15 @@
 {
-  "name": "ts-tg-bot",
+  "name": "tg-clickup-invoice-gen",
   "version": "1.0.0",
-  "description": "Telegram bot template in TypeScript ",
+  "description": "Telegram wrapper for ClickUP Invoice Generator",
   "main": "build/index.js",
   "scripts": {
     "compile": "tsc",
     "postcompile": "cp -r src/locales build",
-    "bg:start": "npm run prepare && pm2 start build/index.js --name telegram-bot",
-    "bg:restart": "npm run prepare && pm2 restart telegram-bot",
-    "bg:logs": "pm2 logs telegram-bot --lines 1000 -f",
+    "build": "npm run compile && npm run postcompile",
+    "bg:start": "npm run build && pm2 start build/index.js --name invoices",
+    "bg:restart": "npm run build && pm2 restart invoices",
+    "bg:logs": "pm2 logs invoices --lines 1000 -f",
     "start": "npm run compile && node .",
     "lint": "npx eslint .",
     "lint:fix": "npm run lint -- --fix"
@@ -16,15 +17,15 @@
   "keywords": [
     "telegram",
     "bot",
-    "grammy",
-    "mongodb",
-    "typescript"
+    "clickup",
+    "invoice",
+    "generator"
   ],
   "author": "ExposedCat",
   "license": "GPL-3.0-or-later",
   "dependencies": {
     "@grammyjs/i18n": "^0.5.1",
-    "clickup-invoice-generator": "^1.1.0",
+    "clickup-invoice-generator": "^1.1.1",
     "dotenv": "^16.0.1",
     "grammy": "^1.24.1",
     "mongodb": "^4.9.1"
